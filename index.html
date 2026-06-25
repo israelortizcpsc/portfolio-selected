@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Israel Ortiz — Full-Stack Developer</title>
+<meta name="description" content="Israel Ortiz builds data-dense web applications with React/TypeScript and Python/Django.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#fbfbf9;
+    --ink:#111113;
+    --soft:#6a6a70;
+    --faint:#9a9aa0;
+    --line:#e7e7e2;
+    --accent:#1f3aff;          /* used only on interaction + one hero tick */
+    --sans:"Inter",system-ui,-apple-system,sans-serif;
+    --mono:"JetBrains Mono",ui-monospace,monospace;
+  }
+  @media (prefers-color-scheme: dark){
+    :root{ --bg:#0d0d0f; --ink:#f2f2ef; --soft:#a0a0a6; --faint:#6a6a70; --line:#222226; --accent:#7c8cff; }
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:var(--sans);background:var(--bg);color:var(--ink);
+    line-height:1.6;font-size:17px;-webkit-font-smoothing:antialiased;
+    letter-spacing:-0.011em;
+  }
+  .wrap{max-width:680px;margin:0 auto;padding:0 28px}
+  a{color:inherit;text-decoration:none}
+  ::selection{background:var(--accent);color:#fff}
+
+  /* fade-up on load */
+  .rise{opacity:0;transform:translateY(14px);animation:rise .7s cubic-bezier(.2,.7,.2,1) forwards}
+  .d1{animation-delay:.05s}.d2{animation-delay:.13s}.d3{animation-delay:.21s}.d4{animation-delay:.29s}
+  @keyframes rise{to{opacity:1;transform:none}}
+
+  /* ---------- nav ---------- */
+  nav{display:flex;justify-content:space-between;align-items:center;padding:30px 0 0}
+  nav .mark{font-weight:600;font-size:15px}
+  nav .links{display:flex;gap:26px;font-size:14px;color:var(--soft)}
+  nav .links a{transition:color .2s}
+  nav .links a:hover{color:var(--ink)}
+
+  /* ---------- hero ---------- */
+  .hero{padding:92px 0 0}
+  .status{display:inline-flex;align-items:center;gap:8px;font-family:var(--mono);font-size:12px;color:var(--soft);margin-bottom:26px}
+  .dot{width:7px;height:7px;border-radius:50%;background:#22c55e;box-shadow:0 0 0 0 rgba(34,197,94,.5);animation:pulse 2.6s infinite}
+  @keyframes pulse{0%{box-shadow:0 0 0 0 rgba(34,197,94,.45)}70%{box-shadow:0 0 0 7px rgba(34,197,94,0)}100%{box-shadow:0 0 0 0 rgba(34,197,94,0)}}
+  h1{font-size:clamp(2rem,6.6vw,3.05rem);line-height:1.08;font-weight:600;letter-spacing:-0.03em}
+  h1 .muted{color:var(--faint)}
+  .lede{font-size:18px;color:var(--soft);margin-top:24px;max-width:33em}
+  .lede b{color:var(--ink);font-weight:500}
+  .herolinks{display:flex;gap:10px;margin-top:30px;flex-wrap:wrap}
+  .lk{font-size:14px;padding:9px 15px;border:1px solid var(--line);border-radius:999px;transition:.2s;color:var(--soft)}
+  .lk:hover{border-color:var(--ink);color:var(--ink)}
+  .lk.solid{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .lk.solid:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+  /* ---------- the one whisper of benchmarking: a quiet percentile tick ---------- */
+  .gauge{margin-top:56px}
+  .gauge .row{display:flex;justify-content:space-between;font-family:var(--mono);font-size:11px;color:var(--faint);margin-bottom:9px;letter-spacing:.02em}
+  .track{position:relative;height:1px;background:var(--line)}
+  .tick{position:absolute;top:-5px;width:1px;height:11px;background:var(--accent);left:0;transition:left 1.1s cubic-bezier(.2,.7,.2,1)}
+
+  /* ---------- sections ---------- */
+  section{padding:74px 0 0}
+  .kicker{font-family:var(--mono);font-size:12px;color:var(--faint);letter-spacing:.04em;margin-bottom:26px}
+
+  /* signature project */
+  .feat h2{font-size:23px;font-weight:600;letter-spacing:-0.02em}
+  .feat .desc{color:var(--soft);margin-top:12px;max-width:38em}
+  .feat .tags{display:flex;flex-wrap:wrap;gap:18px;margin-top:18px;font-family:var(--mono);font-size:12px;color:var(--faint)}
+  .feat .more{display:flex;gap:22px;margin-top:22px;font-size:14px}
+  .feat .more a{color:var(--soft);transition:color .2s;display:inline-flex;align-items:center;gap:6px}
+  .feat .more a:hover{color:var(--accent)}
+  .feat .more a .ar{transition:transform .2s}
+  .feat .more a:hover .ar{transform:translate(2px,-2px)}
+
+  /* range list */
+  .list{margin-top:4px}
+  .item{display:flex;align-items:baseline;gap:18px;padding:20px 0;border-top:1px solid var(--line);transition:.2s}
+  .item:hover{padding-left:6px}
+  .item .nm{font-weight:500;font-size:17px;white-space:nowrap}
+  .item .dd{color:var(--soft);font-size:15px;flex:1}
+  .item .go{color:var(--faint);font-family:var(--mono);font-size:12px;transition:.2s}
+  .item:hover .go{color:var(--accent)}
+  @media(max-width:560px){.item{flex-direction:column;gap:5px}.item .dd{font-size:14px}}
+
+  /* approach */
+  .approach p{color:var(--soft);max-width:40em;margin-top:14px}
+  .approach p a{color:var(--ink);border-bottom:1px solid var(--accent);transition:.2s}
+  .approach p a:hover{color:var(--accent)}
+
+  /* footer */
+  footer{padding:78px 0 60px}
+  footer h2{font-size:25px;font-weight:600;letter-spacing:-0.02em}
+  footer .meta{color:var(--soft);margin-top:10px;font-size:15px}
+  footer .fl{display:flex;gap:24px;margin-top:22px;font-size:14px;font-family:var(--mono);color:var(--soft);flex-wrap:wrap}
+  footer .fl a{transition:color .2s}
+  footer .fl a:hover{color:var(--accent)}
+
+  @media (prefers-reduced-motion: reduce){
+    .rise{animation:none;opacity:1;transform:none}
+    .tick,.dot{transition:none;animation:none}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <nav class="rise d1">
+    <span class="mark">Israel Ortiz</span>
+  </nav>
+
+  <!-- ===================== HERO ===================== -->
+  <header class="hero">
+    <div class="status rise d1"><span class="dot"></span> Open to work · Ashburn / NoVA</div>
+    <h1 class="rise d2">I build the dashboards<br>that tell you <span class="muted">where you stand.</span></h1>
+    <p class="lede rise d3">Full-stack developer working in <b>TypeScript / React</b> and <b>Python / Django</b>. I turn large project datasets into tools people trust to make expensive decisions.</p>
+    <div class="herolinks rise d3">
+      <a class="lk solid" href="mailto:israeljortizcpsc@gmail.com">Email</a>
+      <a class="lk" href="https://github.com/israeljortizcpsc">GitHub</a>
+      <a class="lk" href="https://www.linkedin.com/in/jacob-ortiz-152660335/">LinkedIn</a>
+    </div>
+
+    <!-- a single, quiet nod to benchmarking -->
+    <div class="gauge rise d4" aria-hidden="true">
+      <div class="row"><span>your estimate vs. industry norm</span><span id="lbl">benchmarking</span></div>
+      <div class="track"><span class="tick" id="tick"></span></div>
+    </div>
+  </header>
+
+  <!-- ===================== SIGNATURE WORK ===================== -->
+  <section id="work" class="feat">
+    <div class="kicker">Selected work / 01</div>
+    <h2>Gauge — capital-project benchmarking</h2>
+    <p class="desc">Enter a project and see where it sits against ~2,000 comparable ones: slice the portfolio by type, phase, region and size; quantify the cost gap against P50/P80 norms; score readiness; roll it up into a shareable report. Built on synthetic data — a demonstration of the engineering, not a clone of any product.</p>
+    <div class="tags"><span>React · TypeScript</span><span>Django · DRF</span><span>PostgreSQL</span><span>accessible charts</span></div>
+    <div class="more">
+      <a href="https://israelortizcpsc.github.io/Gauge-CAPEX-Benchmarking-Dashboard/">Live app <span class="ar">↗</span></a>
+      <a href="https://github.com/israelortizcpsc/Gauge-CAPEX-Benchmarking-Dashboard/wiki/How-This-Was-Built">How it was built <span class="ar">↗</span></a>
+      <a href="https://github.com/israelortizcpsc/Gauge-CAPEX-Benchmarking-Dashboard">Source <span class="ar">↗</span></a>
+    </div>
+  </section>
+
+  <!-- ===================== RANGE ===================== -->
+  <section>
+    <div class="kicker">Selected work / 02 — range</div>
+    <div class="list">
+      <a class="item" href="https://github.com/israeljortizcpsc/capital-project-dq">
+        <span class="nm">Capital-project DQ</span>
+        <span class="dd">Django tool that scans a project dataset for missing fields, bad values, and outliers — CI-style pass/fail.</span>
+        <span class="go">↗</span>
+      </a>
+      <a class="item" href="https://github.com/israeljortizcpsc/django-url-shortener">
+        <span class="nm">Django URL shortener</span>
+        <span class="dd">DRF service with base62 codes, validation, rate limiting, and OpenAPI docs — back-end depth, separate from Gauge.</span>
+        <span class="go">↗</span>
+      </a>
+      <a class="item" href="https://github.com/israeljortizcpsc/react-a11y-datatable">
+        <span class="nm">React a11y table</span>
+        <span class="dd">Generic, keyboard-navigable React/TypeScript table — sort, filter, paginate.</span>
+        <span class="go">↗</span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ===================== APPROACH ===================== -->
+  <section id="approach" class="approach">
+    <div class="kicker">Approach</div>
+    <p>I use AI assistants to scaffold, test, and rubber-duck — then review and rewrite anything I can't explain. Every architectural decision in my work is mine, and I can walk through it line by line. <a href="https://github.com/israelortizcpsc/Gauge-CAPEX-Benchmarking-Dashboard/wiki/How-This-Was-Built">Read how Gauge was built →</a></p>
+    <p>I ship from Figma hand-off to deployed feature in agile sprints, treat usability, performance and security as first-class concerns, review PRs, and mentor. I do my best work in a room full of developers.</p>
+  </section>
+
+  <!-- ===================== CONTACT ===================== -->
+  <footer id="contact">
+    <div class="kicker">Contact</div>
+    <h2>Let's build something.</h2>
+    <p class="meta">Based in Leesburg, VA — fifteen minutes from Ashburn, and happy in an office.</p>
+    <div class="fl">
+      <a href="mailto:israeljortizcpsc@gmail.com">israeljortizcpsc@gmail.com</a>
+      <a href="https://github.com/israeljortizcpsc">github</a>
+      <a href="https://www.linkedin.com/in/jacob-ortiz-152660335/">linkedin</a>
+    </div>
+  </footer>
+
+</div>
+
+<script>
+  // Slide the percentile tick to P74 once, on load. One readout, reduced-motion safe.
+  (function(){
+    var tick = document.getElementById('tick');
+    var lbl  = document.getElementById('lbl');
+    if(!tick||!lbl) return;
+    var target = 74;
+    function paint(p){
+      tick.style.left = p + '%';
+      lbl.textContent = 'P' + Math.round(p) + ' · +' + Math.round((p-50)*0.4) + '% over norm';
+    }
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ paint(target); return; }
+    var start=null;
+    requestAnimationFrame(function step(ts){
+      if(!start) start=ts;
+      var t=Math.min(1,(ts-start)/1100), e=1-Math.pow(1-t,3);
+      paint(50+(target-50)*e);
+      if(t<1) requestAnimationFrame(step);
+    });
+  })();
+</script>
+</body>
+</html>
